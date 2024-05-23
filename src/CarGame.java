@@ -8,18 +8,13 @@ import java.util.Random;
 public class CarGame extends CarGameBase
 {
 
-//	Image carImage;
-//	
-//	Rect[] enemyCars = {
-//			
-//	};
+
 	Rect player = new Rect(195, 400, 50, 100,"car-player.png");
 	Rect gameOverRect = new Rect("BLACK",100, 200, 300, 200);
 	Rect scoreRect = new Rect("YELLOW",385, 10, 110, 40);
 	EnemyCar[] enemyCars = new EnemyCar[8];
 	int score =0;
 	
-//	Rect car = new Rect(255, 100, 50, 100, "car2.png");
 	Rect road = new Rect(50, 0, 400,600,"road.png");
 	Rect grassLeft = new Rect("GREEN", 0,0,50,600);
 	Rect grassRight = new Rect("GREEN", 450,0,50,600);
@@ -47,21 +42,8 @@ public class CarGame extends CarGameBase
 		if(pressing[RT])  player.moveRT(8);
 		if(player.overlaps(grassLeft)) player.pushedOutOf(grassLeft);
 		if(player.overlaps(grassRight)) player.pushedOutOf(grassRight);
-//		if(pressing[_R]) restartGame();
 		if(pressing[_R]) System.out.println("DID I PRESS R");
-//		for (int i =0; i < enemyCars.length; i++) {
-//			
-//			if (enemyCars[i] != null) {
-//                enemyCars[i].move();
-//                if (enemyCars[i].isOffScreen(getHeight())) {
-//                    enemyCars[i] = null;  // Remove car if it goes off-screen
-//                }
-//		}else if (Math.random() < 0.1) { // Chance to add a new car
-//			Random rand = new Random();
-//			enemyCars[i] = new EnemyCar(rand.nextInt(500 - 30),50,50,100,"car"+i+1+".png");
-//			System.out.println("is this inside creating new car");
-//		}
-//	}
+
 		
 		for (int i =0; i < enemyCars.length; i++) {
 		
@@ -77,14 +59,12 @@ public class CarGame extends CarGameBase
 			
 			if (enemyCars[i] == null && Math.random() < 0.1) {
 
-//                enemyCars[i] = new EnemyCar(60 + i * 150, -210 * (i + 1),45,90,"car"+(i)+".png");
-//				enemyCars[i] = new EnemyCar(50+(i%4)*60, -125 * (i + 1),50,100,"car"+(i)+".png");
+
 				if(i%2 == 0) {
 					enemyCars[i] = new EnemyCar(50 + i * 100, -110 * (i + 1),45,90,"car"+(i)+".png");
 					}else {
 						enemyCars[i] = new EnemyCar(50 + i * 50, -210 * (i + 1),45,90,"car"+(i)+".png");
 					}
-//				enemyCars[i] = new EnemyCar(50+(i%4)*(350/4), -125 * (i / 4 +1),50,100,"car"+(i)+".png");
 
                 break;  // Add only one car per frame
             }
@@ -129,17 +109,7 @@ public class CarGame extends CarGameBase
         	pen.setFont(gameoverFont);
         	pen.setColor(Color.RED);
         	pen.drawString("Game Over", 170, 275);
-        	pen.drawString("Score " + score, 200, 325);
-        	pen.setColor(Color.GREEN);
-        	pen.drawString("Press R to restart", 170, 400);
-
-        	
-//        	if(pressing[SPACE]) {
-//        		gameOver=false;
-//        		restartGame();
-//        		System.out.println("inside pressing R");
-//        	}
-//        	
+        	pen.drawString("Score " + score, 200, 325);    	
             
         	 
         }
@@ -157,17 +127,12 @@ public class CarGame extends CarGameBase
 				enemyCars[i] = new EnemyCar(60 + i * 100, -110 * (i + 1),45,90,"car"+(i)+".png");
 			
 		
-//			enemyCars[i] = new EnemyCar(50+(i%4)*60, -125 * (i / 4 +1),50,100,"car"+(i)+".png");
-//			enemyCars[i] = new EnemyCar(50+(i%4)*60, -125 * (i + 1),50,100,"car"+(i)+".png"); works no outside cars but on top of each other
-//			enemyCars[i] = new EnemyCar(55 + i * 50, -125 * (i + 1),50,100,"car"+(i)+".png");
-//			enemyCars[i] = new EnemyCar(50+(i%4)*60, -125 * (i + 1),50,100,"car"+(i)+".png");
+
 			}else {
 
 				enemyCars[i] = new EnemyCar(50 + i * 100, -210 * (i + 1),45,90,"car"+(i)+".png");
 			}
-//			if(enemyCars[i].overlaps(enemyCars[(i-1)])) {
-//				enemyCars[i] = new EnemyCar(x-60,y-110,50,100,"car"+(i+1)+".png");
-//			}
+
 		}
 	}
 
