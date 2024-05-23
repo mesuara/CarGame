@@ -32,16 +32,6 @@ public class EnemyCar extends Rect{
         return y > screenHeight;
     }
 
-//    public Rect[] makeCars(int num ) {
-//    	Rect[] carsArray = new Rect[num];
-//    	
-//    	for(int i=0; i < num; i++) {
-//    		Random rand = new Random();
-//    		carsArray[i]= new EnemyCar(rand.nextInt(500 - 30),50,50,100,"car"+i+1+".png");
-//    	}
-//    	
-//    	return carsArray;
-//    	
-//    }
+
 	
 }
