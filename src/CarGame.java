@@ -12,7 +12,7 @@ public class CarGame extends CarGameBase
 	Rect player = new Rect(195, 400, 50, 100,"car-player.png");
 	Rect gameOverRect = new Rect("BLACK",100, 200, 300, 200);
 	Rect scoreRect = new Rect("YELLOW",385, 10, 110, 40);
-	EnemyCar[] enemyCars = new EnemyCar[8];
+	EnemyCar[] enemyCars = new EnemyCar[10];
 	int score =0;
 	
 	Rect road = new Rect(50, 0, 400,600,"road.png");
@@ -60,11 +60,12 @@ public class CarGame extends CarGameBase
 			if (enemyCars[i] == null && Math.random() < 0.1) {
 				Random rand = new Random();
 				if(i%2 == 0) {
-					enemyCars[i] = new EnemyCar(rand.nextInt(450-60) + 60, -110 * (i + 10),45,90,"car"+(i)+".png");
+					enemyCars[i] = new EnemyCar(rand.nextInt(450-60) + 60, -110 * (i + 8),45,90,"car"+(i)+".png");
+					if(score > 100) enemyCars[i].move(10);
 					}else {
 						
 						enemyCars[i] = new EnemyCar(rand.nextInt(300-60) + 60, -210 * (i + 5),45,90,"car"+(i)+".png");
-						if(score > 80) enemyCars[i].move(rand.nextInt(15-i)+5);
+						if(score > 80) enemyCars[i].move(rand.nextInt(15-i)+i);
 					}
 
                 break;  
@@ -74,6 +75,7 @@ public class CarGame extends CarGameBase
 			}else if(enemyCars[i] != null && enemyCars[i].overlaps(grassRight)){
 				enemyCars[i].pushedOutOf(grassRight);
 			}
+			
 			if(enemyCars[i] != null && enemyCars[i].overlaps(player)) {
 				bgMusic.stopMusic();
 				crashSound.playSoundEffect("../Audio/crash-sound.wav");
@@ -100,7 +102,7 @@ public class CarGame extends CarGameBase
                 Font scoreFont = new Font("Serif", Font.BOLD,24);
             	pen.setFont(scoreFont);
                 pen.setColor(Color.RED);
-                pen.drawString("Score " + score, 400, 38);
+                pen.drawString("Score " + score, 390, 38);
             }
         }
 		
