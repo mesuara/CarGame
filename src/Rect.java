@@ -218,8 +218,7 @@ public class Rect
 	
 	public void draw(Graphics pen)
 	{
-		//pen.drawImage(image, x, y, w, h, observer);
-//		pen.drawRect(x, y, w, h);
+
 		if(image != null) {
 			pen.drawImage(image, x - Camera.x, y - Camera.y, w, h, null);
 		}if(colorName != null) {

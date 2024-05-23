@@ -15,8 +15,8 @@ public class EnemyCar extends Rect{
 		
 	}
 	
-	public void move() {
-        this.y += 5; // Move speed can be adjusted here
+	public void move(int num) {
+        this.y += num; // Move speed can be adjusted here
     }
 
     public void draw(Graphics pen) {

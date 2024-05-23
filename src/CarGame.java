@@ -48,25 +48,26 @@ public class CarGame extends CarGameBase
 		for (int i =0; i < enemyCars.length; i++) {
 		
 			if (enemyCars[i] != null) {
-				enemyCars[i].move();
+				enemyCars[i].move(5);
 				if (enemyCars[i].isOffScreen(getHeight())) {
                     enemyCars[i] = null;
                     score+=10;
-                    System.out.println("am I inside null for car");// Remove car if it goes off-screen
+            
                 }
 				
 			}
 			
 			if (enemyCars[i] == null && Math.random() < 0.1) {
-
-
+				Random rand = new Random();
 				if(i%2 == 0) {
-					enemyCars[i] = new EnemyCar(50 + i * 100, -110 * (i + 1),45,90,"car"+(i)+".png");
+					enemyCars[i] = new EnemyCar(rand.nextInt(450-60) + 60, -110 * (i + 10),45,90,"car"+(i)+".png");
 					}else {
-						enemyCars[i] = new EnemyCar(50 + i * 50, -210 * (i + 1),45,90,"car"+(i)+".png");
+						
+						enemyCars[i] = new EnemyCar(rand.nextInt(300-60) + 60, -210 * (i + 5),45,90,"car"+(i)+".png");
+						if(score > 80) enemyCars[i].move(rand.nextInt(15-i)+5);
 					}
 
-                break;  // Add only one car per frame
+                break;  
             }
 			if(enemyCars[i] != null && enemyCars[i].overlaps(grassLeft)) {
 				enemyCars[i].pushedOutOf(grassLeft);
@@ -119,19 +120,15 @@ public class CarGame extends CarGameBase
 
 
 	public void makeCars() {
-		int x = 50;
-		int y = 0;
+		Random rand = new Random();
+
 		for (int i =0; i < enemyCars.length; i++) {
 			if(i%2 == 0) {
+				enemyCars[i] = new EnemyCar(rand.nextInt(450-60) + 60, -110 * (i + 10),45,90,"car"+(i)+".png");
+				}else {
+					enemyCars[i] = new EnemyCar(rand.nextInt(300-60) + 60, -210 * (i + 5),45,90,"car"+(i)+".png");
+				}
 
-				enemyCars[i] = new EnemyCar(60 + i * 100, -110 * (i + 1),45,90,"car"+(i)+".png");
-			
-		
-
-			}else {
-
-				enemyCars[i] = new EnemyCar(50 + i * 100, -210 * (i + 1),45,90,"car"+(i)+".png");
-			}
 
 		}
 	}
